@@ -1,0 +1,68 @@
+"use strict";
+
+exports.host = {};
+exports.host.ip = "185.162.235.230";
+
+exports.admin = {};
+exports.admin.username = "mlibre";
+exports.admin.password = "password";
+exports.admin.email = "m.gh@linuxmail.org";
+exports.admin.lang = "fa";
+
+exports.sql = {};
+exports.sql.config = 
+{
+	userName: 'sa',
+	password: 'password',
+	server: '95.216.58.176',
+	options: 
+	{
+		// encrypt: true,
+		database: 'DataBaseName'
+	}
+}
+
+exports.seriate = {};
+exports.seriate.config = 
+{
+	"name": "default",
+	"port": 1433,
+	"user": "wuser",
+	"password": 'password',
+	server: 'DataBaseName-azuredb.database.windows.net',
+	"database": "DataBaseName",
+	options:
+	{
+		encrypt: true
+	},
+};
+
+exports.healightMail = 'healightG@gmail.com';
+exports.healighMailPass = 'password';
+
+// social medias
+exports.telegram = {};
+exports.telegram.apiToken = "dsada";
+exports.telegram.groupAddress = {};
+exports.telegram.groupAddress.fa = "@healightFa";
+
+exports.telegram.gwlc = {};
+exports.telegram.gwlc.RecReq = {};
+exports.telegram.gwlc.RecReq.apiToken = "663200133";
+exports.telegram.gwlc.InOut = {};
+exports.telegram.gwlc.InOut.apiToken = "663200133";
+exports.telegram.gwlc.InOutAdmin = {};
+exports.telegram.gwlc.InOutAdmin.apiToken = "663200133";
+exports.telegram.gwlc.Vac = {};
+exports.telegram.gwlc.Vac.apiToken = "663200133";
+exports.telegram.gwlc.clientsProfiles = {};
+exports.telegram.gwlc.clientsProfiles.apiToken = "663200133";
+
+exports.medium = {};
+// exports.medium.clientId = 'f44f22f56e14';
+// exports.medium.clientSecret = 'fsdfsf';
+// exports.medium.AuthorizationCode = '';
+// exports.medium.redirectUrl = 'https://healight.green/stuff/mediumCB';
+exports.medium.pubId = {};
+exports.medium.pubId.fa = 'fdsf';
+exports.medium.token = 'fdsfs';

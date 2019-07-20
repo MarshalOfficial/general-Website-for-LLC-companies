@@ -1,0 +1,38 @@
+<%- include(consV.layouts.head , {also_add:[consV.css.article, consV.css.customBS, consV.css.boxes],
+pageDes :"قوانین و شرایط سایت شرکت IMG"})%>
+<body>
+
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "altPage" , varValue: altPage })%>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "lang" , varValue: lang })%>
+	
+	<%- include(consV.layouts.header)%>
+	<%- include(consV.layouts.sidebar_navbar, {active:[""]})%>
+	<%- include(consV.layouts.navbar , {active:""})%>
+
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<!-- main -->
+			<main class="col-md-10">
+				<%- include(consV.layouts.article , {artH: item.Title , artC: item.Content , artURL: ""}) %>
+				<!-- morba ha -->
+				<div class="WaveBox_con">
+					<ul class="FlexCen">
+						<div class="WaveBox">
+							<a href="<%='/' + lang+consV.pages.orgchart%>">
+								<div class="wave_one"></div>
+								<div class="wave_two"></div>
+								<div class="WaveBox_title"><%=i18n.__("چارت سازمانی")%></div>
+							</a>
+						</div>
+					</ul>
+				</div>
+				<!-- morba ha end -->
+			</main>
+			<!-- main end -->
+		</div>
+	</div>
+	<%- include(consV.layouts.footer, {OverlayOnClick: "closeSN()"})%>
+	<!-- scripts -->
+	<%- include(consV.layouts.scripts , {also_add:[consV.js.main , consV.js.search, consV.js.sign]})%>
+	
+</html>

@@ -1,0 +1,31 @@
+# licens issue. copied from net
+cluad flare:
+DNS ONly
+---------------
+check .env for APP_URL
+setting -> general -> system
+session -> database. max file size -> 200
+---------------
+php-fpm config:
+upload_max_filesize = 200M
+post_max_size = 100M
+
+sudo apt-get install php7.2-zip php7.2-tidy php-tokenizer php-mbstring
+wget https://github.com/akaunting/akaunting/archive/master.zip
+
+cd akaunting
+
+composer install
+
+copy akaunting config file.
+sudo nano /etc/nginx/sites-enabled/akaunting
+sudo systemctl restart nginx.service
+
+https://akaunting.company.org/install/language
+
+
+mysql -u root -p
+GRANT ALL PRIVILEGES ON *.* TO 'mlibre'@'localhost' IDENTIFIED BY 'masoudsam';
+ctrl + D
+mysql -u mlibre -p
+CREATE DATABASE ak

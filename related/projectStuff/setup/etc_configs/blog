@@ -1,0 +1,29 @@
+## copied not my license
+## https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04
+# copied. licensed maybe. need to be rewrite
+
+server {
+        listen 80;
+        #listen [::]:80 default_server;
+
+        root /home/mlibre/blog.company.org;
+        server_name blog.company.org;
+
+        index index.php index.html;
+
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+
+        client_max_body_size 100M;
+
+        location / {
+                try_files $uri $uri/ /index.php?is_args$args;
+        }
+
+        location ~ \.php$ {
+                fastcgi_split_path_info ^(.+.php)(/.*)$;
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+                fastcgi_keep_conn on;
+        }
+}

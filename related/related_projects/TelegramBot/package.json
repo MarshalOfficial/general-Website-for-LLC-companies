@@ -1,0 +1,17 @@
+{
+  "name": "healightBot",
+  "version": "1.0.0",
+  "description": "healight bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "geolib": "^2.0.24",
+    "moment": "^2.22.2",
+    "node-schedule": "^1.3.0",
+    "node-telegram-bot-api": "^0.29.0"
+  }
+}

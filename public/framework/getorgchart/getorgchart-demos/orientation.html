@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>OrgChart | Orientation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../getorgchart/getorgchart.js"></script>
+    <link href="../getorgchart/getorgchart.css" rel="stylesheet" />
+    <style type="text/css">
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        .orgchart {
+            border: solid 1px #878787;
+            margin: 5px;
+            float: left;
+            width: 30%;
+            height: 30%;
+        }
+    </style>
+</head>
+<body>
+    <div class="orgchart" id="RO_TOP"></div>
+    <div class="orgchart" id="RO_TOP_PARENT_LEFT"></div>
+    <div class="orgchart" id="RO_BOTTOM"></div>
+    <div class="orgchart" id="RO_BOTTOM_PARENT_LEFT"></div>
+    <div class="orgchart" id="RO_RIGHT"></div>
+    <div class="orgchart" id="RO_RIGHT_PARENT_TOP"></div>
+    <div class="orgchart" id="RO_LEFT"></div>
+    <div class="orgchart" id="RO_LEFT_PARENT_TOP"></div>
+
+
+    <script type="text/javascript">
+        var orgChart1 = new getOrgChart(document.getElementById("RO_TOP"), {
+            primaryFields: ["name", "title", "phone", "mail"],
+            orientation: getOrgChart.RO_TOP,
+            enableZoom: false,
+            enableDetailsView: false,
+            enableEdit: false,
+            enableSearch: false,
+            enableMove: false,
+            boxSizeInPercentage: { minBoxSize: { width: 5, height: 5 }, boxSize: { width: 50, height: 50 }, maxBoxSize: { width: 100, height: 100 } },
+            dataSource: [
+			    { id: 1, parentId: null, name: "Amber McKenzie", title: "CEO", phone: "678-772-470", mail: "lemmons@jourrapide.com", adress: "Atlanta, GA 30303"},
+			    { id: 2, parentId: 1, name: "Ava Field", title: "Paper goods machine setter", phone: "937-912-4971", mail: "anderson@jourrapide.com"},
+			    { id: 3, parentId: 1, name: "Evie Johnson", title: "Employer relations representative", phone: "314-722-6164", mail: "thornton@armyspy.com"}
+            ]
+        });
+
+        var orgChart2 = new getOrgChart(document.getElementById("RO_TOP_PARENT_LEFT"), {
+            primaryFields: ["name", "title", "phone", "mail"],
+            orientation: getOrgChart.RO_TOP_PARENT_LEFT,
+            enableZoom: false,
+            enableDetailsView: false,
+            enableMove: false,
+            enableSearch: false,
+            enableEdit: false,
+            boxSizeInPercentage: { minBoxSize: { width: 5, height: 5 }, boxSize: { width: 50, height: 50 }, maxBoxSize: { width: 100, height: 100 } },
+            dataSource: [
+			    { id: 1, parentId: null, name: "Amber McKenzie", title: "CEO", phone: "678-772-470", mail: "lemmons@jourrapide.com", adress: "Atlanta, GA 30303" },
+			    { id: 2, parentId: 1, name: "Ava Field", title: "Paper goods machine setter", phone: "937-912-4971", mail: "anderson@jourrapide.com" },
+			    { id: 3, parentId: 1, name: "Evie Johnson", title: "Employer relations representative", phone: "314-722-6164", mail: "thornton@armyspy.com" }
+            ]
+        });
+
+        var orgChart3 = new getOrgChart(document.getElementById("RO_BOTTOM"), {
+            primaryFields: ["name", "title", "phone", "mail"],
+            orientation: getOrgChart.RO_BOTTOM,
+            enableZoom: false,
+            enableDetailsView: false,
+            enableMove: false,
+            enableSearch: false,
+            enableEdit: false,
+            boxSizeInPercentage: { minBoxSize: { width: 5, height: 5 }, boxSize: { width: 50, height: 50 }, maxBoxSize: { width: 100, height: 100 } },
+            dataSource: [
+			    { id: 1, parentId: null, name: "Amber McKenzie", title: "CEO", phone: "678-772-470", mail: "lemmons@jourrapide.com", adress: "Atlanta, GA 30303" },
+			    { id: 2, parentId: 1, name: "Ava Field", title: "Paper goods machine setter", phone: "937-912-4971", mail: "anderson@jourrapide.com" },
+			    { id: 3, parentId: 1, name: "Evie Johnson", title: "Employer relations representative", phone: "314-722-6164", mail: "thornton@armyspy.com" }
+            ]
+        });
+
+        var orgChart4 = new getOrgChart(document.getElementById("RO_BOTTOM_PARENT_LEFT"), {
+            primaryFields: ["name", "title", "phone", "mail"],
+            orientation: getOrgChart.RO_BOTTOM_PARENT_LEFT,
+            enableZoom: false,
+            enableDetailsView: false,
+            enableMove: false,
+            enableSearch: false,
+            enableEdit: false,
+            boxSizeInPercentage: { minBoxSize: { width: 5, height: 5 }, boxSize: { width: 50, height: 50 }, maxBoxSize: { width: 100, height: 100 } },
+            dataSource: [
+			    { id: 1, parentId: null, name: "Amber McKenzie", title: "CEO", phone: "678-772-470", mail: "lemmons@jourrapide.com", adress: "Atlanta, GA 30303" },
+			    { id: 2, parentId: 1, name: "Ava Field", title: "Paper goods machine setter", phone: "937-912-4971", mail: "anderson@jourrapide.com" },
+			    { id: 3, parentId: 1, name: "Evie Johnson", title: "Employer relations representative", phone: "314-722-6164", mail: "thornton@armyspy.com" }
+            ]
+        });
+
+
+        var orgChart5 = new getOrgChart(document.getElementById("RO_RIGHT"), {
+            primaryFields: ["name", "title", "phone", "mail"],
+            orientation: getOrgChart.RO_RIGHT,
+            enableZoom: false,
+            enableDetailsView: false,
+            enableMove: false,
+            enableSearch: false,
+            enableEdit: false,
+            boxSizeInPercentage: { minBoxSize: { width: 5, height: 5 }, boxSize: { width: 50, height: 50 }, maxBoxSize: { width: 100, height: 100 } },
+            dataSource: [
+			    { id: 1, parentId: null, name: "Amber McKenzie", title: "CEO", phone: "678-772-470", mail: "lemmons@jourrapide.com", adress: "Atlanta, GA 30303" },
+			    { id: 2, parentId: 1, name: "Ava Field", title: "Paper goods machine setter", phone: "937-912-4971", mail: "anderson@jourrapide.com" },
+			    { id: 3, parentId: 1, name: "Evie Johnson", title: "Employer relations representative", phone: "314-722-6164", mail: "thornton@armyspy.com" }
+            ]
+        });
+
+
+        var orgChart6 = new getOrgChart(document.getElementById("RO_RIGHT_PARENT_TOP"), {
+            primaryFields: ["name", "title", "phone", "mail"],
+            orientation: getOrgChart.RO_RIGHT_PARENT_TOP,
+            enableZoom: false,
+            enableDetailsView: false,
+            enableMove: false,
+            enableSearch: false,
+            enableEdit: false,
+            boxSizeInPercentage: { minBoxSize: { width: 5, height: 5 }, boxSize: { width: 50, height: 50 }, maxBoxSize: { width: 100, height: 100 } },
+            dataSource: [
+			    { id: 1, parentId: null, name: "Amber McKenzie", title: "CEO", phone: "678-772-470", mail: "lemmons@jourrapide.com", adress: "Atlanta, GA 30303" },
+			    { id: 2, parentId: 1, name: "Ava Field", title: "Paper goods machine setter", phone: "937-912-4971", mail: "anderson@jourrapide.com" },
+			    { id: 3, parentId: 1, name: "Evie Johnson", title: "Employer relations representative", phone: "314-722-6164", mail: "thornton@armyspy.com" }
+            ]
+        });
+
+        var orgChart7 = new getOrgChart(document.getElementById("RO_LEFT"), {
+            primaryFields: ["name", "title", "phone", "mail"],
+            orientation: getOrgChart.RO_LEFT,
+            enableZoom: false,
+            enableDetailsView: false,
+            enableMove: false,
+            enableSearch: false,
+            enableEdit: false,
+            boxSizeInPercentage: { minBoxSize: { width: 5, height: 5 }, boxSize: { width: 50, height: 50 }, maxBoxSize: { width: 100, height: 100 } },
+            dataSource: [
+			    { id: 1, parentId: null, name: "Amber McKenzie", title: "CEO", phone: "678-772-470", mail: "lemmons@jourrapide.com", adress: "Atlanta, GA 30303" },
+			    { id: 2, parentId: 1, name: "Ava Field", title: "Paper goods machine setter", phone: "937-912-4971", mail: "anderson@jourrapide.com" },
+			    { id: 3, parentId: 1, name: "Evie Johnson", title: "Employer relations representative", phone: "314-722-6164", mail: "thornton@armyspy.com" }
+            ]
+        });
+
+        var orgChart8 = new getOrgChart(document.getElementById("RO_LEFT_PARENT_TOP"), {
+            primaryFields: ["name", "title", "phone", "mail"],
+            orientation: getOrgChart.RO_LEFT_PARENT_TOP,
+            enableZoom: false,
+            enableDetailsView: false,
+            enableMove: false,
+            enableEdit: false,
+            enableSearch: false,
+            boxSizeInPercentage: { minBoxSize: { width: 5, height: 5 }, boxSize: { width: 50, height: 50 }, maxBoxSize: { width: 100, height: 100 } },
+            dataSource: [
+			    { id: 1, parentId: null, name: "Amber McKenzie", title: "CEO", phone: "678-772-470", mail: "lemmons@jourrapide.com", adress: "Atlanta, GA 30303" },
+			    { id: 2, parentId: 1, name: "Ava Field", title: "Paper goods machine setter", phone: "937-912-4971", mail: "anderson@jourrapide.com" },
+			    { id: 3, parentId: 1, name: "Evie Johnson", title: "Employer relations representative", phone: "314-722-6164", mail: "thornton@armyspy.com" }
+            ]
+        });
+    </script>
+
+
+</body>
+</html>

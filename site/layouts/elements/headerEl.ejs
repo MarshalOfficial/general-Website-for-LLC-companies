@@ -1,0 +1,21 @@
+<% if(typeof artURL != "undefined")
+{%>
+	<a id="headerEl" class="m-auto" href="<%=artURL%>">
+<%}
+else
+{%>
+	<div id="headerEl" class="m-auto">
+<%}%>
+
+	<span id="headerElIcon_right" class="<%if(typeof AMark == 'undefined'){%>fa fa-book<%}else{%><%=AMark%><%}%>"></span>
+	<span id="headerElIcon_left" class="<%if(typeof AMark == 'undefined'){%>fa fa-book<%}else{%><%=AMark%><%}%> fa-rotate-180"></span>
+	<h1 id="article_header_text"><%=artH%></h1>
+
+<% if(typeof artURL != "undefined")
+{%>
+	</a>
+<%}
+else
+{%>
+	</div>
+<%}%>

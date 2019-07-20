@@ -1,0 +1,55 @@
+<%- include(consV.layouts.head , {also_add: [consV.css.slideshow , consV.css.article,
+consV.css.customBS], pageDes: ""})%>
+<body>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "altPage" , varValue: altPage })%>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "lang" , varValue: lang })%>
+	
+	<%- include(consV.layouts.header)%>
+	<%- include(consV.layouts.sidebar_navbar, {active: [portalName]})%>
+	<%- include(consV.layouts.navbar , {active: portalName, stick: true})%>
+
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<!-- main -->
+			<main class="col-md-8 ml-md-5 pl-md-1 pr-md-0">
+				<%- include(consV.layouts.slideshow ,
+				{
+					slideshows: slideshows
+				})%>
+				<div class="mt-4"></div>
+				
+				<% if( CA != null)
+				{%>
+					<%- include(consV.layouts.article,
+					{
+						artH: CA.Title , artC: CA.Content, artURL: "" , artReadMoreB: false
+					})
+					%><%
+				}%>
+				
+			</main>
+			<!-- main end -->
+			<!-- sidebar -->
+			<div class="col-md-3 ml-4 mr-3">
+				<div id="aside_container">
+					<%mElements.forEach(function(el, i)
+					{
+						el.url = '/' + lang + el.url%>
+						<%- include(consV.layouts.melement,el)%>
+						<div class="my-3"></div>
+					<%});%>
+					<%- include(consV.layouts.ad,
+					{
+						imageAD: 'ad.jpg'
+					})
+					%>					
+				</div>
+			</div>
+			<!-- sidebar end -->
+		</div>
+	</div>
+	<%- include(consV.layouts.footer, {OverlayOnClick: "closeSN()"})%>
+	<!-- scripts -->
+	<%- include(consV.layouts.scripts , {also_add:[consV.js.main , consV.js.slideshow, consV.js.sign,
+	consV.js.hammer]})%>
+</html>

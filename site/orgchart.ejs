@@ -1,0 +1,26 @@
+<%- include(consV.layouts.head , {also_add:[consV.css.article, consV.css.customBS, consV.css.boxes
+, consV.css.framework.orgchart], pageDes :"چارت سازمانی شرکت آی ام جی"})%>
+<body>
+
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "altPage" , varValue: altPage })%>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "lang" , varValue: lang })%>
+	
+	<%- include(consV.layouts.header)%>
+	<%- include(consV.layouts.sidebar_navbar, {active:[""]})%>
+	<%- include(consV.layouts.navbar , {active:""})%>
+
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<!-- main -->
+			<main class="col-md-12 p-0 m-0">
+				<div id="people"></div>
+			</main>
+			<!-- main end -->
+		</div>
+	</div>
+	<%- include(consV.layouts.footer, {OverlayOnClick: "closeSN()"})%>
+	<!-- scripts -->
+	<%- include(consV.layouts.scripts , {also_add:[consV.js.main, consV.js.search,
+	consV.js.sign, consV.js.framework.orgchart, consV.js.orgchart]})%>
+	
+</html>

@@ -1,0 +1,69 @@
+<form id="slideShowFrom" method="post" action="<%=consV.webApi.setSlideShow%>"
+encType="multipart/form-data" onsubmit="<%=formOnSubmit%>">
+
+	<div class="form-group sr-only">
+		<input id="slideID" name="slideID" type="text">
+	</div>
+
+	<div class="form-group mr-0 pr-0 row">
+		<label class="Font18px mr-3" for="slideShowFormPage">
+			برای صفحه ی
+		</label>
+
+		<select id="slideShowFormPage" name="slideShowFormPage" class="custom-select col FontIranSans mr-3" onchange="<%=PageChange%>">
+		</select>
+		<label class="Font18px mr-3" for="slideShowFormLang">
+			زبان
+		</label>
+		<select id="slideShowFormLang" name="slideShowFormLang" class="custom-select col FontIranSans mr-3" onchange="<%=PageChange%>">
+			<%consV.site.langs.inArray.forEach( (el , i) =>
+			{%>
+				<option value="<%=el%>" <%if(i == 0){%>selected<%}%> ><%=i18n.__(consV.site.langs[el].name)%></option>
+			<%});%>
+		</select>
+		<label class="Font18px mr-3" for="slideShowFormSN">
+			برای اسلایده
+		</label>
+		<select id="slideShowFormSN" name="slideShowFormSN" class="custom-select col FontIranSans mr-3" onchange="<%=TitleChange%>">
+		</select>
+	</div>
+	<hr>
+
+	<div class="form-group">
+		<label for="file" class="custom-file">
+			عکس فعلی
+		</label>
+		<div><img id="slideShowFormImg"  class="Mimg m-auto d-block" src=""/></div>
+	</div>
+	<div class="form-group">
+		<label for="file" class="custom-file">
+			انتخاب عکس
+		</label>
+		<input id="file" name="file" class="form-control-file" type="file" value="انتخاب">
+	</div>
+	<div class="form-group mr-0 pr-0 row">
+		<label class="col-12 pr-0 Font18px">
+			یک ،دو یا حداکثر سه کلمه که عکس رو توصیف کنه
+		</label>
+		<input id="slideShowFormImageAlt1" name="slideShowFormImageAlt1" class="col-3 ml-3 form-control form-control-sm" type="text">
+		<input id="slideShowFormImageAlt2" name="slideShowFormImageAlt2" class="col-3 ml-3 form-control" type="text">
+		<input id="slideShowFormImageAlt3" name="slideShowFormImageAlt3" class="col-3 ml-3 form-control" type="text">
+	</div>
+
+	<div class="form-group">
+		<label class="Font18px" for="slideShowFormTitle">
+			تیتر اسلاید
+			<%- include( consV.layouts.questionMark , {QMTitlle: "تیتر اسلاید شو" , QMContent: "متنی که پایین عکس نمایش داده میشه. در صورتی که چیزی ننویسید، متن درخت نمایش، در نظر گرفته میشه."} ) %>
+		</label>
+		<input id="slideShowFormTitle" name="slideShowFormTitle" class="form-control" type="text">
+	</div>
+
+	<div class="form-group">
+		<label class="Font18px" for="slideShowFormUrl">
+			آدرس
+			<%- include( consV.layouts.questionMark , {QMTitlle: "لینک اسلاید" , QMContent: "لینک"} ) %>
+		</label>
+		<input id="slideShowFormUrl" name="slideShowFormUrl" class="form-control" type="text">
+	</div>
+	<button id="slideShowFormSubmit" type="submit" class="btn btn-primary col-md-3">ثبت</button>
+</form>

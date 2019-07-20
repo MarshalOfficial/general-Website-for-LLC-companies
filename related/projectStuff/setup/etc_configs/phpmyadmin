@@ -1,0 +1,35 @@
+# license issue
+server {
+        listen   80; ## listen for ipv4; this line is default and implied
+
+        root /usr/share/phpmyadmin/;
+        server_name pma.company.org www.pma.company.org;
+        #return 301 https://$host$request_uri;
+
+
+        index index.php index.html;
+
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+
+        client_max_body_size 100M;
+        #location / {
+        #        if (!-e $request_filename) {
+        #                rewrite ^/.*$ /index.php last;
+        #        }
+        #}
+
+        location / {
+                try_files $uri $uri/ /index.php?$args;        
+        }
+
+        location ~ \.php$ {
+                #fastcgi_index index.php;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                #fastcgi_split_path_info ^(.+.php)(/.*)$;
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+                fastcgi_keep_conn on;
+        }
+
+}

@@ -1,0 +1,590 @@
+<%- include(consV.layouts.head , {also_add:[consV.css.slideshow, consV.css.article,
+consV.css.boxes, consV.css.customBS, consV.css.departments.main, consV.css.mmodal,
+consV.css.headerEl]})%>
+<body>
+
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "altPage" , varValue: altPage })%>	
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "lang" , varValue: lang })%>
+	<%- include( consV.layouts.header )%>
+	<%- include(consV.layouts.sidebar_navbar, {active:["enc", "legal"]})%>
+	<%- include( consV.layouts.navbar , {active: "legal", stick: false} )%>
+	<%- include( consV.layouts.mmodal ) %>
+
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<!-- main -->
+			<main id="checkMigirationWaysFormMain" class="col-11 FontIranSans">
+				<%- include(consV.layouts.article,
+				{
+					artH: article.Title , artC: article.Content , artL: i18n.__("راههای مهاجرت"), artURL: "" , artReadMoreB: false
+				})
+				%>
+				<form id="checkMigirationWaysForm" class="mt-4" method="post" action="<%='/' + lang + consV.pages.departments.legal.checkMigirationWaysForm%>"
+				encType="multipart/form-data" onsubmit="ResgisterMigForm(event);">
+					<div class="col-md-7 mt-5 mb-3 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("اطلاعات شخصی"), artURL: "#", AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+					<div class="form-group">
+						<label class="d-block float-none Font1d063rem" for="CountriesToMigrate">
+							<%=i18n.__("کشورهای مورد نظر برای مهاجرت")%>
+						</label>
+						<div class="col-10 mt-3">
+							<div class="form-check form-check-inline mt-md-0">
+								<label class="Font1d063rem form-check-label" for="CountriesToMigrate">
+									<%=i18n.__("کانادا")%>
+								</label>
+								<input value="canada" type="checkbox" class="form-check-input ml-2" name="CountriesToMigrate">
+							</div>
+							<div class="form-check form-check-inline mt-md-0">
+								<label class="Font1d063rem form-check-label" for="CountriesToMigrate">
+									<%=i18n.__("گرجستان")%>
+								</label>
+								<input value="georgia" type="checkbox" class="form-check-input ml-2" name="CountriesToMigrate">
+							</div>
+							<div class="form-check form-check-inline mt-md-0">
+								<label class="Font1d063rem form-check-label" for="CountriesToMigrate">
+									<%=i18n.__("یونان")%>
+								</label>
+								<input value="greece" type="checkbox" class="form-check-input ml-2" name="CountriesToMigrate">
+							</div>
+							<div class="form-check form-check-inline mt-md-0">
+								<label class="Font1d063rem form-check-label" for="CountriesToMigrate">
+									<%=i18n.__("آلمان")%>
+								</label>
+								<input value="germany" type="checkbox" class="form-check-input ml-2" name="CountriesToMigrate">
+							</div>
+							<div class="form-check form-check-inline mt-md-0">
+								<label class="Font1d063rem form-check-label" for="CountriesToMigrate">
+									<%=i18n.__("اتریش")%>
+								</label>
+								<input value="austria" type="checkbox" class="form-check-input ml-2" name="CountriesToMigrate">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-3">
+							<label class="Font1d063rem" for="FirstName">
+								<%=i18n.__("نام")%>
+							</label>
+							<input id="FirstName" name="FirstName" class="form-control" type="text" required>
+						</div>
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="LastName">
+								<%=i18n.__("نام خانوادگی")%>
+							</label>
+							<input id="LastName" name="LastName" class="form-control" type="text" required>
+						</div>
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="BirthDate">
+								<%=i18n.__("تاریخ تولد")%>
+							</label>
+							<input id="BirthDate" name="BirthDate" class="form-control" type="text" placeholder="<%=i18n.__('۱۳/۱۲/۱۳۷۰')%>">
+						</div>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-3">
+							<label class="Font1d063rem" for="MilitaryStatus">
+								<%=i18n.__("وضعیت نظام وظیفه")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="MilitaryStatus" name="MilitaryStatus" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-globe"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="ChildCountUnder22">
+							<%=i18n.__("تعداد فرزندان زیر ۱۸ سال")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="ChildCountUnder22" name="ChildCountUnder22" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-child"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 mr-sm-2">
+							<label class="Font1d063rem" for="Nationality">
+								<%=i18n.__("ملیت")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="Nationality" name="Nationality" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-globe"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-3">
+							<label class="Font1d063rem" for="ResidenceCountry">
+								<%=i18n.__("کشور محل اقامت")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="ResidenceCountry" name="ResidenceCountry" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-globe-asia"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="d-block Font1d063rem float-none" for=""><%=i18n.__("جنسیت")%></label>
+							<div class="form-check form-check-inline mt-2">
+								<label class="form-check-label" for="sexFemale"><%=i18n.__("زن")%></label>
+								<input class="form-check-input ml-3" type="radio" id="sexFemale" name="Sex" value="Female">
+							</div>
+
+							<div class="form-check form-check-inline">
+								<label class="form-check-label" for="sexMale"><%=i18n.__("مرد")%></label>
+								<input class="form-check-input ml-3" type="radio" id="sexMale" name="Sex" value="Male">
+							</div>
+						</div>
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="d-block Font1d063rem float-none" for=""><%=i18n.__("وضعیت تاهل")%></label>
+							<div class="form-check form-check-inline mt-2">
+								<label class="form-check-label" for="married"><%=i18n.__("متاهل")%></label>
+								<input class="form-check-input ml-3" type="radio" id="married" name="IsMarried" value="Married">
+							</div>
+
+							<div class="form-check form-check-inline">
+								<label class="form-check-label" for="notMarried"><%=i18n.__("مجرد")%></label>
+								<input class="form-check-input ml-3" type="radio" id="notMarried" name="IsMarried" value="NotMarried">
+							</div>
+						</div>
+					</div>
+
+					
+					<div class="form-row mt-3">
+						<div class="col-md-5">
+							<label class="Font1d063rem" for="TraveledCountries">
+								<%=i18n.__("به چه کشورهایی تا کنون سفر کرده اید؟")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="TraveledCountries" name="TraveledCountries" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-globe-asia"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 mr-sm-2 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="RelationsInOtherCountries">
+								<%=i18n.__("آیا اقوامی در خارج از کشور دارید؟")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="RelationsInOtherCountries" name="RelationsInOtherCountries" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-globe-asia"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-7 mt-5 mb-5 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("تحصیلات"), artURL: "#", AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="EducationField">
+							<%=i18n.__("رشته ی تحصیلی")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-university"></i>
+								</div>
+							</div>
+							<input id="EducationField" name="EducationField" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group mt-3 mt-md-0">
+						<label class="d-block Font1d063rem" for=""><%=i18n.__("آخرین مدرک تحصیلی")%></label>
+						<div class="form-check form-check-inline mt-2">
+							<label class="form-check-label" for="eduLevDi"><%=i18n.__("دیپلم")%></label>
+							<input class="form-check-input ml-3" type="radio" id="eduLevDi" name="EducationDegree" value="دیپلم">
+						</div>
+
+						<div class="form-check form-check-inline">
+							<label class="form-check-label" for="eduLevKa"><%=i18n.__("کاردانی")%></label>
+							<input class="form-check-input ml-3" type="radio" id="eduLevKa" name="EducationDegree" value="کاردانی">
+						</div>
+
+						<div class="form-check form-check-inline">
+							<label class="form-check-label" for="eduLevKar"><%=i18n.__("کارشناسی")%></label>
+							<input class="form-check-input ml-3" type="radio" id="eduLevKar" name="EducationDegree" value="کارشناسی">
+						</div>
+
+						<div class="form-check form-check-inline">
+							<label class="form-check-label" for="eduLevAr"><%=i18n.__("ارشد")%></label>
+							<input class="form-check-input ml-3" type="radio" id="eduLevAr" name="EducationDegree" value="کارشناسی ارشد">
+						</div>
+
+						<div class="form-check form-check-inline">
+							<label class="form-check-label" for="eduLevDoc"><%=i18n.__("دکترا")%></label>
+							<input class="form-check-input ml-3" type="radio" id="eduLevDoc" name="EducationDegree" value="دکترا">
+						</div>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="OtherEducationField">
+							<%=i18n.__("دیگر مدارک تحصیلی")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-university"></i>
+								</div>
+							</div>
+							<input id="OtherEducationField" name="OtherEducationField" class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="col-md-7 mt-5 mb-5 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("دارایی"), artURL: "#", AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="WholeFund">
+							<%=i18n.__("ارزش تقریبی کل دارایی")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-university"></i>
+								</div>
+							</div>
+							<input id="WholeFund" name="WholeFund" class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="PropertyOwner">
+							<%=i18n.__("آیا ملکی به نام شما ثبت شده است")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-university"></i>
+								</div>
+							</div>
+							<input id="PropertyOwner" name="PropertyOwner" class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="LastYearAnnualIncome">
+							<%=i18n.__("متوسط درامد سال گذشته")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-university"></i>
+								</div>
+							</div>
+							<input id="LastYearAnnualIncome" name="LastYearAnnualIncome" class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="col-md-7 mt-5 mb-5 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("زبان"), artURL: "#", AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-5">
+							<label class="Font1d063rem" for="EnSkill">
+								<%=i18n.__("میزان تسلط به زبان انگلیسی")%>
+							</label>
+							<input type="range" name="EnSkill" id="EnSkill" class="custom-range ltrDir" min="0" max="100" value="0" step="0.5">
+						</div>
+						<div class="col-md-2">
+						</div>
+						<div class="col-md-5">
+							<div class="form-group">
+								<label class="Font1d063rem" for="FaSkill">
+									<%=i18n.__("میزان تسلط به زبان فارسی")%>
+								</label>
+								<input type="range" name="FaSkill" id="FaSkill" class="custom-range ltrDir" min="0" max="100" value="0" step="0.5">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-5">
+							<div class="form-group mt-3">
+								<label class="Font1d063rem" for="GeSkill">
+									<%=i18n.__("میزان تسلط به زبان گرجی")%>
+								</label>
+								<input type="range" name="GeSkill" id="GeSkill" class="custom-range ltrDir" min="0" max="100" value="0" step="0.5">
+							</div>
+						</div>
+						<div class="col-md-2">
+						</div>
+						<div class="col-md-5">
+							<div class="form-group mt-3">
+								<label class="Font1d063rem" for="RuSkill">
+									<%=i18n.__("میزان تسلط به زبان روسی")%>
+								</label>
+								<input type="range" name="RuSkill" id="RuSkill" class="custom-range ltrDir" min="0" max="100" value="0" step="0.5">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-5">
+							<div class="form-group mt-3">
+								<label class="Font1d063rem" for="FrSkill">
+									<%=i18n.__("میزان تسلط به زبان فرانسوی")%>
+								</label>
+								<input type="range" name="FrSkill" id="FrSkill" class="custom-range ltrDir" min="0" max="100" value="0" step="0.5">
+							</div>
+						</div>
+						<div class="col-md-2">
+						</div>
+						<div class="col-md-5">
+							<div class="form-group mt-3">
+								<label class="Font1d063rem" for="DuSkill">
+									<%=i18n.__("میزان تسلط به زبان آلمانی")%>
+								</label>
+								<input type="range" name="DuSkill" id="DuSkill" class="custom-range ltrDir" min="0" max="100" value="0" step="0.5">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="OtherLanguages">
+							<%=i18n.__("آیا به زبان دیگری هم آشنایی دارید؟")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-language"></i>
+								</div>
+							</div>
+							<input id="OtherLanguages" name="OtherLanguages" class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-3 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="EnCertificate">
+								<%=i18n.__("آیا مدرک زبان انگلیسی دارید؟ (IELTS, TOEFL)")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="EnCertificate" name="EnCertificate" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-language"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="DuCertificate">
+								<%=i18n.__("آیا مدرک زیان آلمانی دارید؟ (A1, A2, B1, B2, C1)")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="DuCertificate" name="DuCertificate" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-language"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-7 mt-5 mb-5 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("تجربه و سوابق شغلی"), artURL: "#", AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-3 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="CurrentCareer">
+								<%=i18n.__("شغل فعلی")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="CurrentCareer" name="CurrentCareer" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-atom"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="CurrentCareerTime">
+								<%=i18n.__("مدت زمان سابقه کاری")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="CurrentCareerTime" name="CurrentCareerTime" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-business-time"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row mt-4 mb-4 pr-1">
+						<div class="col-md-3">
+							<label class="Font1d063rem" for="file">
+								<%=i18n.__("انتخاب فایل رزومه")%>
+							</label>
+							<div class="custom-file">
+								<label class="custom-file-label text-center" for="file"><%=i18n.__("انتخاب")%></label>
+								<input type="file" class="custom-file-input" id="file" name="file" >
+							</div>
+						</div>
+						<div class="col-md-3 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="LinkedInUrl">
+								<%=i18n.__("آدرس پروفایل لینکداین")%>
+							</label>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fab fa-linkedin"></i>
+									</div>
+								</div>
+								<input id="LinkedInUrl" name="LinkedInUrl" class="form-control" type="text">
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-7 mt-5 mb-5 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("اطلاعات تماس"), artURL: "#", AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-3 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="Tel">
+								<%=i18n.__("شماره ی تماس")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="Tel" name="Tel" class="form-control" type="text" required>
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-phone"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="Mail">
+								<%=i18n.__("ایمیل")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="Mail" name="Mail" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">@</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-row mt-3">
+						<div class="col-md-3 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="Telegram">
+								<%=i18n.__("آی دی یا شماره تلگرام")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="Telegram" name="Telegram" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fab fa-telegram"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="WhatsApp">
+								<%=i18n.__("آی دی یا شماره واتس آپ")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="WhatsApp" name="WhatsApp" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fab fa-whatsapp"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="Memo">
+							<%=i18n.__("اگر مطلب دیگری هست و دوست دارید اضافه کنید")%>	
+						</label>
+						<textarea class="form-control" id="Memo" name="Memo" row="3"></textarea>
+					</div>
+
+					<div class="form-group">
+						<div class="form-check mt-3 mt-md-0">
+							<input class="form-check-input is-invalid" type="checkbox" id="SiteLaw" value="" required>
+							<label class="form-check-label mr-4 Font1d063rem" for="SiteLaw">
+								<%=i18n.__("قوانین وب سایت را قبول دارم")%>
+							</label>
+							<div class="invalid-feedback">
+								<%=i18n.__("لازم است قبل از ثبت شرایط را قبول کنید")%>
+							</div>
+						</div>
+					</div>
+
+					<button type="submit" id="submotBut" class="btn btn-primary btn-lg MBoxShadow text_good_gray_little mx-auto mt-3 col-11 col-md-4 d-block"><%=i18n.__("ثبت")%></button>
+				</form>
+				
+			</main>
+		</div>
+	</div>
+	<%- include(consV.layouts.footer, {OverlayOnClick: "closeSN()"})%>
+	<!-- scripts -->
+	<%- include(consV.layouts.scripts , {also_add:[consV.js.main , consV.js.sign,
+	consV.js.pages.departments.legal.checkMigirationWaysForm, consV.js.mmodal]}) %>
+	
+	<!-- scripts end -->
+</body>
+</html>

@@ -1,0 +1,93 @@
+<%- include(consV.layouts.head , {also_add:[consV.css.material_dashboard,
+consV.css.mmodal, consV.css.myaccount.main],
+pageDes :"IMG . نمای کلی اکانت"})%>
+<body id="materialDashboard" class="">
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "altPage" , varValue: altPage })%>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "lang" , varValue: lang })%>
+	<div class="wrapper">
+		<%- include(consV.layouts.myaccount.sidebar , {active: 'timelog'}) %>
+		<div class="main-panel text_good_black_little">
+			<%- include(consV.layouts.myaccount.navbar , {pageText: "نمای کلی"}) %>
+		   <%- include( consV.layouts.mmodal ) %>
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+
+						<ul class="nav nav-tabs nav-pills nav-fill w-100" role="tablist" id="repTab">
+							<li class="nav-item">
+								<a class="nav-link" id="rep-tab" data-toggle="tab" href="#rep-tabCon" role="tab" aria-controls="rep" >گزارش لیست</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="reg-tab" data-toggle="tab" href="#reg-tabCon" role="tab" aria-controls="reg" >ثبت عملکرد</a>
+							</li>
+						</ul>
+						
+						<div class="tab-content w-100" id="repTabContent">
+							<div class="tab-pane fade" id="rep-tabCon" role="tabpanel" aria-labelledby="rep-tab">
+								<div class="container mt-3">
+
+								</div>
+							</div>
+							<div class="tab-pane fade" id="reg-tabCon" role="tabpanel" aria-labelledby="reg-tab">
+								<div class="container mt-3">
+
+									<form id="timeLongForm" method="post" action="<%='/' + lang + consV.pages.myaccount.timelog%>"
+									encType="multipart/form-data" onsubmit="postTimeLogForm(event);">
+
+										<div class="form-group sr-only">
+											<input id="logIdForm" class="form-control" name="logIdForm" type="text">
+										</div>
+
+										<div class="form-group col-4 ml-auto">
+											<label class="Font18px" for="timeLogFormDate" style="top: initial; left: initial; position: relative">
+												تاریخ
+											</label>
+											<input type="date" class="form-control" id="timeLogFormDate" name="timeLogFormDate">
+										</div>
+
+
+										<div class="form-group">
+											<label class="Font18px" for="treeTitle">
+												تیتر
+												<%- include( consV.layouts.questionMark , {QMTitlle: "تیتر سایدبار دانشنامه" , QMContent: "متنی که در نوار سمت راست صفحه ی دانشنامه است"} ) %> 
+											</label>
+											<input id="treeTitle" name="treeTitle" class="form-control" type="text">
+										</div>
+										<div class="form-group">
+											<label class="Font18px" for="articleVideoUrl">
+												لینک ویدیو
+												<%- include( consV.layouts.questionMark , {QMTitlle: "لینک ویدوی" , QMContent: "لینک"} ) %> 
+											</label>
+											<input id="articleVideoUrl" name="articleVideoUrl" class="form-control" type="text">
+										</div>
+										<div class="form-group">
+											<label class="Font18px" for="editor">
+												مقاله
+											</label>
+											<textarea id="editor" name="articleContent" class="form-control">
+												موفق باشید
+											</textarea>
+										</div>
+										
+										<button id="timeLongFormSubmit" type="submit" class="btn btn-primary col-md-3">ثبت</button>
+									</form>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<%- include(consV.layouts.myaccount.footer) %>
+		</div>
+	</div>
+</body>
+<%- include(consV.layouts.scripts,
+{
+    also_add:[consV.js.sign, consV.js.material_dashboard.bootstrap,
+    consV.js.myaccount.timelog, consV.js.mmodal,
+	  consV.js.material_dashboard.bootstrapNotify,
+    consV.js.material_dashboard.chartist, consV.js.material_dashboard.perfectScrollbarJquery,
+     consV.js.material_dashboard.main]
+})%>
+</html>

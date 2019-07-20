@@ -1,0 +1,46 @@
+
+=========================
+###Manual run healight####
+=========================
+npm run sm
+pm2 start health.js
+pm2 restart 0
+
+==========================
+test
+==========================
+mocha test/
+
+==========================
+Google
+==========================
+Copy Google verification file to space/stuff
+
+=========================
+git
+==========================
+hard update:
+git fetch --all
+git reset --hard origin/master
+git pull origin master
+
+==========================
+Telegram
+==========================
+http://t.me/healightBot
+
+==========================
+medium
+==========================
+https://medium.com/@healight
+
+==========================
+vscode setting
+==========================
+ext install syncing
+ctrl + shift + p. syncing: download settings.
+
+==========================
+sync space folder. home with remote.
+==========================
+rsync -av --ignore-existing mlibre@78.47.152.253:/home/mlibre/healight/space/* healight/space/

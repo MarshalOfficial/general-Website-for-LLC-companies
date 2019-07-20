@@ -1,0 +1,35 @@
+<%- include(consV.layouts.head , {also_add:[consV.css.slideshow,
+consV.css.boxes , consV.css.article, consV.css.customBS]})%>
+<body>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "altPage" , varValue: altPage })%>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "lang" , varValue: lang })%>
+	
+	<%- include(consV.layouts.header)%>
+	<%- include(consV.layouts.sidebar_navbar, {active:["enc", art.DepartmentTitleEn]})%>
+	<%- include(consV.layouts.navbar , {active: art.DepartmentTitleEn, stick: true})%>
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<!-- main -->
+			<main class="col-md-8 ml-md-5 pl-md-1 pr-md-0">
+			<%if(art.VideoUrl != undefined && art.VideoUrl != ""){%>
+				<div class="mt-4"></div>
+				<video controls>
+					<source src="<%=art.VideoUrl%>" type="video/mp4">
+				</video>
+			<%}%>
+				<div class="mt-4"></div>
+				<%if(typeof art != 'undefined'){%>
+					<%- include(consV.layouts.article , {artH: art.Title , artC: art.Content, artURL: ""}) %>
+				<%}%>
+
+			</main>
+			<!-- main end -->
+		</div>
+	</div>
+	<%- include(consV.layouts.footer, {OverlayOnClick: "closeSN()"})%>
+	<!-- scripts -->
+	<%- include(consV.layouts.scripts , {also_add:[consV.js.main , consV.js.slideshow, consV.js.sign]}) %>
+	
+	<!-- scripts end -->
+</body>
+</html>

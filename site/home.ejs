@@ -1,0 +1,75 @@
+<%- include(consV.layouts.head , {also_add: [consV.css.slideshow , consV.css.article,
+consV.css.customBS], pageDes: consV.site.des})%>
+<body>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "altPage" , varValue: altPage })%>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "lang" , varValue: lang })%>
+	
+	<%- include(consV.layouts.header)%>
+	<%- include(consV.layouts.sidebar_navbar, {active:["home"]})%>
+	<%- include(consV.layouts.navbar , {active:"home", stick: true})%>
+
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<!-- main -->
+			<main class="col-md-8 ml-md-5 pl-md-1 pr-md-0">
+				<%- include(consV.layouts.slideshow ,
+				{
+					slideshows: slideshows
+				})%>
+				<div class="mt-4"></div>
+				
+				<% if( CA != null)
+				{%>
+					<%- include(consV.layouts.article,
+					{
+						artH: CA.Title , artC: CA.Content , artL: i18n.__("درباره ما"), artURL: '/' + lang + consV.pages.aboutus , artReadMoreB: true
+					})
+					%><%
+				}%>
+				
+			</main>
+			<!-- main end -->
+			<!-- sidebar -->
+			<div class="col-md-3 ml-4 mr-3">
+				<div id="aside_container">
+					<%- include(consV.layouts.telegram) %>
+					<div class="my-3"></div>
+					<%- include(consV.layouts.melement,
+					{
+						melementText: 'اقامت و کار در گرجستان',
+						url: '/' + lang + consV.pages.departments.legal.geo,
+						faIcon: 'fa fa-home',
+						BGColor: '#6200ee'
+					})%>
+					<div class="my-3"></div>
+					<%- include(consV.layouts.melement,
+					{
+						melementText: 'وبلاگ',
+						url: consV.links.weblog,
+						faIcon: 'fab fa-blogger',
+						BGColor: '#620099'
+					})%>
+					<div class="my-3"></div>
+					<%- include(consV.layouts.melement,
+					{
+						melementText: 'استخدام و همکاری',
+						url: '/' + lang + '/departments/human_resources/recruitment',
+						faIcon: 'fab fa-blogger',
+						BGColor: '#2e7d32'
+					})%>
+					<div class="my-3"></div>
+					<%- include(consV.layouts.ad,
+					{
+						imageAD: 'ad.jpg'
+					})
+					%>					
+				</div>
+			</div>
+			<!-- sidebar end -->
+		</div>
+	</div>
+	<%- include(consV.layouts.footer, {OverlayOnClick: "closeSN()"})%>
+	<!-- scripts -->
+	<%- include(consV.layouts.scripts , {also_add:[consV.js.main , consV.js.slideshow, consV.js.sign,
+	consV.js.hammer]})%>
+</html>

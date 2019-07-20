@@ -1,0 +1,34 @@
+<%- include(consV.layouts.head , {also_add: [consV.css.customBS , consV.css.pub.profile], pageDes: ""})%>
+<body>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "altPage" , varValue: altPage })%>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "lang" , varValue: lang })%>
+	
+	<%- include(consV.layouts.header)%>
+	<%- include(consV.layouts.sidebar_navbar, {active: [""]})%>
+	<%- include(consV.layouts.navbar , {active: "", stick: false})%>
+
+	<div id="containerWrapper" class="container-fluid">
+		<div class="row justify-content-center">
+			<!-- main -->
+			<main id="mainWrapper" class="col-md-8 ml-md-5 pl-md-1 pr-md-0">
+				<div class="content">
+					<div class="card">
+						<div class="firstinfo">
+							<img src="<%=info.ImgAddress%>"/>
+							<div class="profileinfo">
+								<h1> <%=info.FullName%> </h1>
+								<h3> <%=info.RoleName%> <h3>
+								<p class="bio"> <%=info.AboutMe%> </p>
+								<span class="email"> <%=info.Email%> </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			<!-- main end -->
+		</div>
+	</div>
+	<%- include(consV.layouts.footer, {OverlayOnClick: "closeSN()"})%>
+	<!-- scripts -->
+	<%- include(consV.layouts.scripts , {also_add:[consV.js.main, consV.js.sign]})%>
+</html>

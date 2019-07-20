@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<people>
+  <person name="Boss" phone="079 0616 3133" image="images/f-16.jpg" addres="58 Copthorne Way, CAMER, DA13 3GN" website="CardTribune.co.uk">
+    <person name="Jacob Henderson" phone="078 4750 2362" image="images/f-15.jpg" dateOfBirth="December 11, 1943" userName="Stivider" >
+
+    </person>
+    <person name="Mason Siebenhaar" phone="079 3176 6188" image="images/f-14.jpg">
+      <person name="Melissa Byler" phone="070 0640 9727" image="images/f-3.jpg" NINO="ZM 64 97 42 A">
+        <person name="Manuel Beekman" phone="079 0346 5377" image="images/f-10.jpg" CVV2="939"></person>
+      </person>
+      <person name="Virgil Lee" phone="078 7598 6890" image="images/f-2.jpg" Visa="4556 4749 0420 0422">
+        <person name="Manuel Beekman" phone="079 0346 5377" image="images/f-10.jpg" CVV2="939"></person>
+      </person>
+      <person name="Anthony Andres" phone="077 2935 5027" image="images/f-4.jpg" MasterCard="5166 1409 9098 3242">
+        <person name="Barbara Mathis" phone="078 3998 6738" image="images/f-9.jpg" GUID="13a75b86-b9a1-40aa-8972-31a4ed573ab6"></person>
+        <person name="Maude Hurst" phone="070 2655 0635" image="images/f-1.jpg" CVC2="108" ></person>
+        <person name="Margaret Hawkins" phone="070 6786 6047" image="images/f-7.jpg" mail="MargaretJHawkins@teleworm.us" ></person>
+        <person name="Jean Pitts" phone="078 6013 1878" image="images/f-5.jpg" mail="JeanWPitts@jourrapide.com" ></person>
+      </person>
+    </person>
+  </person>
+</people>

@@ -1,0 +1,470 @@
+<%- include(consV.layouts.head , {also_add:[consV.css.article,
+consV.css.customBS, consV.css.departments.main, consV.css.mmodal,
+consV.css.headerEl]})%>
+<body>
+
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "altPage" , varValue: altPage })%>	
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "lang" , varValue: lang })%>
+	<%- include( consV.layouts.header )%>
+	<%- include( consV.layouts.sidebar_navbar, {active:["", ""]} )%>
+	<%- include( consV.layouts.navbar , {active: "", stick: false} )%>
+	<%- include( consV.layouts.mmodal ) %>
+
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<!-- main -->
+			<main id="recruitmentMain" class="col-11 FontIranSans">
+				<%- include(consV.layouts.article,
+				{
+					artH: article.Title , artC: article.Content , artL: i18n.__("دعوت به همکاری"), artURL: "" , artReadMoreB: false
+				})
+				%>
+				<form id="recruitment" class="mt-4" method="post" action="<%='/' + lang + consV.pages.departments.human_resources.recruitment%>"
+				encType="multipart/form-data" onsubmit="ResgisterRecForm(event);">
+					<div class="col-md-7 mt-5 mb-3 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("اطلاعات شخصی"), artURL: "#", AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+					<div class="form-row mt-3 mt-md-0">
+						<div class="col-md-3">
+							<label class="Font1d063rem" for="recruitment_CoField">
+								<%=i18n.__("زمینه ی همکاری")%>
+							</label>
+							<select class="custom-select" id="recruitment_CoField" name="recruitment_CoField">
+								<option value="importExport" selected><%=i18n.__("صادرات و واردات")%></option>
+								<option value="reception"><%=i18n.__("رسپشن")%></option>
+								<option value="barman"><%=i18n.__("بار من")%></option>
+								<option value="massage"><%=i18n.__("ماساژور")%></option>
+								<option value="KGTech"><%=i18n.__("مربی مهد")%></option>
+								<option value="Clerk"><%=i18n.__("منشی")%></option>
+								<option value="DesignAndPaint"><%=i18n.__("طراحی و نقاشی")%></option>
+								<option value="Playing"><%=i18n.__("نوازندگی")%></option>
+								<option value="Dance"><%=i18n.__("رقص")%></option>
+								<option value="Sing"><%=i18n.__("آواز")%></option>
+								<option value="Cleaning"><%=i18n.__("نظافت")%></option>
+								<option value="Cook"><%=i18n.__("آشپزی")%></option>
+								<option value="Beuty"><%=i18n.__("خدمات زیبایی")%></option>
+								<option value="other"><%=i18n.__("بقیه موارد")%></option>
+							</select>
+						</div>
+						<div class="col-md-3">
+						</div>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-3">
+							<label class="Font1d063rem" for="recruitment_name">
+								<%=i18n.__("نام")%>
+							</label>
+							<input id="recruitment_name" name="recruitment_name" class="form-control" type="text" required>
+						</div>
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="recruitment_lastname">
+								<%=i18n.__("نام خانوادگی")%>
+							</label>
+							<input id="recruitment_lastname" name="recruitment_lastname" class="form-control" type="text" required>
+						</div>
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="recBD">
+								<%=i18n.__("تاریخ تولد")%>
+							</label>
+							<input id="recBD" name="recBD" class="form-control" type="text" placeholder="<%=i18n.__('۱۳/۱۲/۱۳۷۰')%>">
+						</div>
+					</div>
+					
+					<div class="form-row mt-3">
+						<div class="col-md-3 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="recTel">
+								<%=i18n.__("شماره ی تماس")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="recTel" name="recTel" class="form-control" type="text" required>
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-phone"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-3 mr-sm-2 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="recMail">
+								<%=i18n.__("ایمیل")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="recMail" name="recMail" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">@</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row mt-3 text-right">
+						<div class="col-md-3">
+							<label class="Font1d063rem" for="nationality">
+								<%=i18n.__("ملیت")%>
+							</label>
+							<div class="input-group mb-2">
+								<input id="nationality" name="nationality" class="form-control" type="text">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-globe"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 mr-0 mr-md-3 mt-3 mt-md-0">
+							<label class="d-block Font1d063rem" for=""><%=i18n.__("ارسال عکس شخصی")%></label>
+							<div class="custom-file">
+								<label class="custom-file-label text-center" for="imageFile"><%=i18n.__(" انتخاب ")%></label>
+								<input type="file" class="custom-file-input" id="imageFile" name="imageFile">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-3 mt-3 mt-md-0">
+							<label class="d-block Font1d063rem float-none" for=""><%=i18n.__("جنسیت")%></label>
+							<div class="form-check form-check-inline mt-2">
+								<label class="form-check-label" for="sexFemale"><%=i18n.__("زن")%></label>
+								<input class="form-check-input ml-3" type="radio" id="sexFemale" name="sex" value="0">
+							</div>
+
+							<div class="form-check form-check-inline">
+								<label class="form-check-label" for="sexMale"><%=i18n.__("مرد")%></label>
+								<input class="form-check-input ml-3" type="radio" id="sexMale" name="sex" value="1">
+							</div>
+						</div>
+						<div class="col-md-3 mt-3 mt-md-0">
+							<label class="d-block Font1d063rem float-none" for=""><%=i18n.__("وضعیت تاهل")%></label>
+							<div class="form-check form-check-inline mt-2">
+								<label class="form-check-label" for="married"><%=i18n.__("مجرد")%></label>
+								<input class="form-check-input ml-3" type="radio" id="married" name="isMarried" value="0">
+							</div>
+
+							<div class="form-check form-check-inline">
+								<label class="form-check-label" for="notMarried"><%=i18n.__("متاهل")%></label>
+								<input class="form-check-input ml-3" type="radio" id="notMarried" name="isMarried" value="1">
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-7 mt-5 mb-5 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("تحصیلات"), artURL: "#", AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="EducationField">
+							<%=i18n.__("رشته ی تحصیلی")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-university"></i>
+								</div>
+							</div>
+							<input id="EducationField" name="EducationField" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group mt-3 mt-md-0">
+						<label class="d-block text-right Font1d063rem" for=""><%=i18n.__("آخرین مدرک تحصیلی")%></label>
+						<div class="form-check form-check-inline mt-2">
+							<label class="form-check-label" for="eduLevDi"><%=i18n.__("دیپلم")%></label>
+							<input class="form-check-input" type="radio" id="eduLevDi" name="EducationDegree" value="دیپلم">
+						</div>
+
+						<div class="form-check form-check-inline">
+							<label class="form-check-label" for="eduLevKa"><%=i18n.__("کاردانی")%></label>
+							<input class="form-check-input" type="radio" id="eduLevKa" name="EducationDegree" value="کاردانی">
+						</div>
+
+						<div class="form-check form-check-inline">
+							<label class="form-check-label" for="eduLevKar"><%=i18n.__("کارشناسی")%></label>
+							<input class="form-check-input" type="radio" id="eduLevKar" name="EducationDegree" value="کارشناسی">
+						</div>
+
+						<div class="form-check form-check-inline">
+							<label class="form-check-label" for="eduLevAr"><%=i18n.__("ارشد")%></label>
+							<input class="form-check-input" type="radio" id="eduLevAr" name="EducationDegree" value="کارشناسی ارشد">
+						</div>
+
+						<div class="form-check form-check-inline">
+							<label class="form-check-label" for="eduLevDoc"><%=i18n.__("دکترا")%></label>
+							<input class="form-check-input" type="radio" id="eduLevDoc" name="EducationDegree" value="دکترا">
+						</div>
+					</div>
+
+					<div class="col-md-7 mt-5 mb-5 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("اقامت"), artURL: "#", AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="HasIDCard">
+							<%=i18n.__("آی دی کارت دارید یا خیر؟")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-id-card"></i>
+								</div>
+							</div>
+							<input id="HasIDCard" name="HasIDCard" class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="IDCardCredit">
+							<%=i18n.__("مدت اعتبار آی دی کارت")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="far fa-calendar"></i>
+								</div>
+							</div>
+							<input id="IDCardCredit" name="IDCardCredit" class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="ResidentType">
+							<%=i18n.__("نوع اقامت شما چیست؟")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-home"></i>
+								</div>
+							</div>
+							<input id="ResidentType" name="ResidentType" class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="col-md-7 mt-5 mb-5 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("تجربه و مهارت ها"), artURL: "#", AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+
+					<div class="form-group mt-4">
+						<label class="Font1d063rem" for="Skills">
+							<%=i18n.__("مهارت ها و تجارب شغلی")%>
+						</label>
+						<textarea class="form-control" id="Skills" name="Skills" row="3"></textarea>
+					</div>
+
+					<div class="form-group mt-4">
+						<label class="Font1d063rem" for="Experience">
+							<%=i18n.__("تجربه ی کاری مرتبط")%>
+						</label>
+						<textarea class="form-control" id="Experience" name="Experience" row="3"></textarea>
+					</div>
+
+					<div class="form-group mt-4">
+						<label class="Font1d063rem" for="OtherExperience">
+							<%=i18n.__("تجربه ی کاری غیر مرتبط")%>
+						</label>
+						<textarea class="form-control" id="OtherExperience" name="OtherExperience" row="3"></textarea>
+					</div>
+					
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="WantedPosition">
+							<%=i18n.__("خواستار فعالیت در چه زمینه ای هستید؟")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fab fa-fly"></i>
+								</div>
+							</div>
+							<input id="WantedPosition" name="WantedPosition" class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="HasRelatedSkill">
+							<%=i18n.__("آیا مهارت های اساسی در مورد شغل مورد نظر را دارید؟")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-code-branch"></i>
+								</div>
+							</div>
+							<input id="HasRelatedSkill" name="HasRelatedSkill" class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="col-md-7 mt-5 mb-5 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("زبان"), artURL: "#", AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-5">
+							<label class="Font1d063rem" for="EnSkill">
+								<%=i18n.__("میزان تسلط به زبان انگلیسی")%>
+							</label>
+							<input type="range" name="EnSkill" id="EnSkill" class="custom-range ltrDir" min="0" max="100" value="0" step="0.5">
+						</div>
+						<div class="col-md-2">
+						</div>
+						<div class="col-md-5">
+							<div class="form-group">
+								<label class="Font1d063rem" for="FaSkill">
+									<%=i18n.__("میزان تسلط به زبان فارسی")%>
+								</label>
+								<input type="range" name="FaSkill" id="FaSkill" class="custom-range ltrDir" min="0" max="100" value="0" step="0.5">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row mt-3">
+						<div class="col-md-5">
+							<div class="form-group mt-3">
+								<label class="Font1d063rem" for="GeSkill">
+									<%=i18n.__("میزان تسلط به زبان گرجی")%>
+								</label>
+								<input type="range" name="GeSkill" id="GeSkill" class="custom-range ltrDir" min="0" max="100" value="0" step="0.5">
+							</div>
+						</div>
+
+						<div class="col-md-2">
+						</div>
+
+						<div class="col-md-5">
+							<div class="form-group mt-3">
+								<label class="Font1d063rem" for="RuSkill">
+									<%=i18n.__("میزان تسلط به زبان روسی")%>
+								</label>
+								<input type="range" name="RuSkill" id="RuSkill" class="custom-range ltrDir" min="0" max="100" value="0" step="0.5">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="OtherLanguages">
+							<%=i18n.__("زبان دیگری هم یاد دارید؟")%>
+						</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-language"></i>
+								</div>
+							</div>
+							<input id="OtherLanguages" name="OtherLanguages" class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="col-md-7 mt-5 mb-5 mx-auto">
+						<%- include(consV.layouts.headerEL,
+						{
+							artH: i18n.__("سرگرمی ها، رزومه و ..."), AMark: "fab fa-hubspot"
+						})
+						%>
+					</div>
+
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="Hobbies">
+							<%=i18n.__("سرگرمی های شما چیست؟")%>
+						</label>
+						<textarea class="form-control" id="Hobbies" name="Hobbies" row="3"></textarea>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="GoalsAndWishes">
+							<%=i18n.__("اهداف و آرزوهای شما چیست؟")%>
+						</label>
+						<textarea class="form-control" id="GoalsAndWishes" name="GoalsAndWishes" row="3"></textarea>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="VolunteerActivity">
+							<%=i18n.__("فعالیت های بشردوستانه و داوطلبانه")%>
+						</label>
+						<textarea class="form-control" id="VolunteerActivity" name="VolunteerActivity" row="3"></textarea>
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="NoteToUs">
+							<%=i18n.__("یک جمله که ما رو تحت تاثیر قرار بدهد!")%>
+						</label>
+						<input id="NoteToUs" name="NoteToUs" class="form-control" type="text">
+					</div>
+
+					<div class="form-group mt-3">
+						<label class="Font1d063rem" for="Memo">
+							<%=i18n.__("اگر مطلب دیگری هست و دوست دارید اضافه کنید")%>	
+						</label>
+						<textarea class="form-control" id="Memo" name="Memo" row="3"></textarea>
+					</div>
+
+					<div class="form-row mt-4 mb-4 pr-1">
+						<div class="col-md-3">
+							<label class="Font1d063rem" for="LinkedInUrl">
+								<%=i18n.__("انتخاب فایل رزومه")%>
+							</label>
+							<div class="custom-file">
+								<label class="custom-file-label text-center" for="file"><%=i18n.__("انتخاب")%></label>
+								<input type="file" class="custom-file-input" id="file" name="file" >
+							</div>
+						</div>
+						<div class="col-md-3 mt-3 mt-md-0">
+							<label class="Font1d063rem" for="LinkedInUrl">
+								<%=i18n.__("آدرس پروفایل لینکداین")%>
+							</label>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fab fa-linkedin"></i>
+									</div>
+								</div>
+								<input id="LinkedInUrl" name="LinkedInUrl" class="form-control" type="text">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="form-check mt-3 mt-md-0">
+							<input class="form-check-input is-invalid" type="checkbox" id="SiteLaw" value="" required>
+							<label class="form-check-label mr-4 Font1d063rem" for="SiteLaw">
+								<%=i18n.__("قوانین وب سایت را قبول دارم")%>
+							</label>
+							<div class="invalid-feedback">
+								<%=i18n.__("لازم است قبل از ثبت شرایط را قبول کنید")%>
+							</div>
+						</div>
+					</div>
+
+					<button type="submit" id="submotBut" class="btn btn-primary btn-lg MBoxShadow text_good_gray_little mx-auto mt-3 col-11 col-md-4 d-block"><%=i18n.__("ثبت")%></button>
+				</form>
+				
+			</main>
+		</div>
+	</div>
+	<%- include(consV.layouts.footer, {OverlayOnClick: "closeSN()"})%>
+	<!-- scripts -->
+	<%- include(consV.layouts.scripts , {also_add:[consV.js.main , consV.js.sign,
+	consV.js.pages.departments.human_resources.recruitment, consV.js.mmodal]}) %>
+	
+	<!-- scripts end -->
+</body>
+</html>

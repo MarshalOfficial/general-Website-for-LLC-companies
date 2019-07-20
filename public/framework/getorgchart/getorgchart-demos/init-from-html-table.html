@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>OrgChart | Initialize From HTML Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script src="../getorgchart/getorgchart.js"></script>
+    <link href="../getorgchart/getorgchart.css" rel="stylesheet" />
+
+
+    <style type="text/css">
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #people {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="people"></div>
+    <div style="float: right; width: 10%; height:100%; text-align:center; display: none;" >
+        <table id="orgChartData">
+            <tr>
+                <th>id</th>
+                <th>parent id</th>
+                <th>name</th>
+                <th>title</th>
+                <th>image</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td></td>
+                <td>Lesley Holmes</td>
+                <td>CEO</td>
+                <td>images/f-48.jpg</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1</td>
+                <td>Colin Patricia</td>
+                <td>Manager</td>
+                <td>images/f-10.jpg</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>1</td>
+                <td>Derek Cork</td>
+                <td>Manager</td>
+                <td>images/f-3.jpg</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>1</td>
+                <td>Harriet Coulter</td>
+                <td>Manager</td>
+                <td>images/f-4.jpg</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>1</td>
+                <td>Belinda Anderson</td>
+                <td>Developer</td>
+                <td>images/f-1.jpg</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>1</td>
+                <td>Willoughby Roberts</td>
+                <td>Developer</td>
+                <td>images/f-6.jpg</td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+            var peopleElement = document.getElementById("people");
+            var orgChart = new getOrgChart(peopleElement, {
+                theme: "deborah",                
+                linkType: "B",
+                primaryFields: ["name", "title"],
+                photoFields: ["image"],
+                enableGridView: true,
+                dataSource: document.getElementById("orgChartData")
+            });
+
+    </script>
+</body>
+</html>

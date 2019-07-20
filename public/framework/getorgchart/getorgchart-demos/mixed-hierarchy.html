@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>OrgChart | Mixed Hierarchy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script src="../getorgchart/getorgchart.js"></script>
+    <link href="../getorgchart/getorgchart.css" rel="stylesheet" />
+
+    <style type="text/css">
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        
+        #people {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <div id="people"></div>
+
+
+    <script type="text/javascript">
+            var peopleElement = document.getElementById("people");
+            var orgChart = new getOrgChart(peopleElement, {
+                primaryFields: ["name", "title", "phone", "mail"],
+                photoFields: ["image"],
+                expandToLevel: 100,
+                layout: getOrgChart.MIXED_HIERARCHY_RIGHT_LINKS,
+                dataSource: [
+			        { id: 1, parentId: null, name: "Amber McKenzie", title: "CEO", phone: "678-772-470", mail: "lemmons@jourrapide.com", adress: "Atlanta, GA 30303", image: "images/f-1.jpg" },
+			        { id: 2, parentId: 1, name: "Ava Field", title: "Paper goods machine setter", phone: "937-912-4971", mail: "anderson@jourrapide.com", image: "images/f-2.jpg" },
+			        { id: 3, parentId: 1, name: "Evie Johnson", title: "Employer relations representative", phone: "314-722-6164", mail: "thornton@armyspy.com", image: "images/f-3.jpg" },
+			        { id: 4, parentId: 2, name: "Paul Shetler", title: "Teaching assistant", phone: "330-263-6439", mail: "shetler@rhyta.com", image: "images/f-4.jpg" },
+			        { id: 5, parentId: 2, name: "Rebecca Francis", title: "Welding machine setter", phone: "408-460-0589", image: "images/f-5.jpg" },
+			        { id: 6, parentId: 2, name: "Rebecca Randall", title: "Optometrist", phone: "801-920-9842", mail: "JasonWGoodman@armyspy.com", image: "images/f-6.jpg" },
+			        { id: 7, parentId: 2, name: "Riley Bray", title: "Structural metal fabricator", phone: "479-359-2159", image: "images/f-12.jpg" },
+			        { id: 8, parentId: 3, name: "Spencer May", title: "System operator", phone: "Conservation scientist", mail: "hodges@teleworm.us", image: "images/f-7.jpg" },
+			        { id: 9, parentId: 3, name: "Max Ford", title: "Budget manager", phone: "989-474-8325", mail: "hunter@teleworm.us", image: "images/f-8.jpg" },
+			        { id: 10, parentId: 3, name: "Riley Bray", title: "Structural metal fabricator", phone: "479-359-2159", image: "images/f-15.jpg" },
+			        { id: 11, parentId: 4, name: "Callum Whitehouse", title: "Radar controller", phone: "847-474-8775", image: "images/f-10.jpg" },
+                    { id: 12, parentId: 4, name: "Max Ford", title: "Budget manager", phone: "989-474-8325", mail: "hunter@teleworm.us", image: "images/f-11.jpg" },
+			        { id: 13, parentId: 4, name: "Riley Bray", title: "Structural metal fabricator", phone: "479-359-2159", image: "images/f-12.jpg" },
+			        { id: 14, parentId: 5, name: "Callum Whitehouse", title: "Radar controller", phone: "847-474-8775", image: "images/f-13.jpg" },
+                    { id: 15, parentId: 5, name: "Max Ford", title: "Budget manager", phone: "989-474-8325", mail: "hunter@teleworm.us", image: "images/f-14.jpg" },
+			        { id: 16, parentId: 5, name: "Riley Bray", title: "Structural metal fabricator", phone: "479-359-2159", image: "images/f-15.jpg" },
+			        { id: 17, parentId: 6, name: "Callum Whitehouse", title: "Radar controller", phone: "847-474-8775", image: "images/f-16.jpg" },
+			        { id: 18, parentId: 6, name: "Max Ford", title: "Budget manager", phone: "989-474-8325", mail: "hunter@teleworm.us", image: "images/f-17.jpg" },
+                    { id: 19, parentId: 7, name: "Spencer May", title: "System operator", phone: "Conservation scientist", mail: "hodges@teleworm.us", image: "images/f-7.jpg" },
+			        { id: 20, parentId: 7, name: "Max Ford", title: "Budget manager", phone: "989-474-8325", mail: "hunter@teleworm.us", image: "images/f-8.jpg" },
+			        { id: 21, parentId: 7, name: "Riley Bray", title: "Structural metal fabricator", phone: "479-359-2159", image: "images/f-9.jpg" },
+                    { id: 22, parentId: 8, name: "Ava Field", title: "Paper goods machine setter", phone: "937-912-4971", mail: "anderson@jourrapide.com", image: "images/f-2.jpg" },
+			        { id: 23, parentId: 8, name: "Evie Johnson", title: "Employer relations representative", phone: "314-722-6164", mail: "thornton@armyspy.com", image: "images/f-3.jpg" }, 
+                    { id: 24, parentId: 9, name: "Callum Whitehouse", title: "Radar controller", phone: "847-474-8775", image: "images/f-13.jpg" },
+                    { id: 25, parentId: 9, name: "Max Ford", title: "Budget manager", phone: "989-474-8325", mail: "hunter@teleworm.us", image: "images/f-14.jpg" },
+			        { id: 26, parentId: 9, name: "Riley Bray", title: "Structural metal fabricator", phone: "479-359-2159", image: "images/f-15.jpg" },
+                    { id: 27, parentId: 10, name: "Callum Whitehouse", title: "Radar controller", phone: "847-474-8775", image: "images/f-13.jpg" },
+                    { id: 28, parentId: 10, name: "Max Ford", title: "Budget manager", phone: "989-474-8325", mail: "hunter@teleworm.us", image: "images/f-14.jpg" },
+			        { id: 29, parentId: 10, name: "Riley Bray", title: "Structural metal fabricator", phone: "479-359-2159", image: "images/f-15.jpg" }
+
+                ]
+            });
+    </script>
+
+
+
+</body>
+</html>

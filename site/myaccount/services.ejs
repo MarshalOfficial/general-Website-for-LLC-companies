@@ -1,0 +1,56 @@
+<%- include(consV.layouts.head ,
+{
+	also_add:[consV.css.material_dashboard, consV.css.myaccount.main,
+	consV.css.mmodal],
+pageDes :"IMG . نمای کلی اکانت"})%>
+<body id="materialDashboard" class="">
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "altPage" , varValue: altPage })%>
+	<%- include( consV.layouts.nodeJsObToClientJsOb , {varName: "lang" , varValue: lang })%>
+	<div class="wrapper">
+		<%- include(consV.layouts.myaccount.sidebar , {active: 'services'}) %>
+		<div class="main-panel text_good_black_little">
+			<%- include(consV.layouts.myaccount.navbar , {pageText: ""}) %>
+		   <%- include( consV.layouts.mmodal ) %>
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header card-header-primary">
+									<h4 id="editProfile" class="card-title">لیست درخواست ها</h4>
+								</div>
+								<div id="editProfileCardBody" class="card-body">
+									<form id="servicesForm" method="post" action="<%=consV.webApi.setServices%>"
+										encType="multipart/form-data" onsubmit="setServices(event)">
+										<div class="row">
+
+											<div class="col-md-4">
+												<label class="col-form-label label-checkbox text-right Font1d063rem"></label>
+												<div id="requestCheckboxList" class="col-sm-10 checkbox-radios">
+													
+												</div>
+											</div>
+
+										</div>
+										<button type="submit" class="btn btn-primary pull-right">اعمال تغییرات</button>
+										<div class="clearfix"></div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<%- include(consV.layouts.myaccount.footer) %>
+		</div>
+	</div>
+</body>
+<%- include(consV.layouts.scripts,
+{
+    also_add:[consV.js.sign, consV.js.material_dashboard.bootstrap,
+    consV.js.myaccount.services, consV.js.mmodal,
+	  consV.js.material_dashboard.bootstrapNotify,
+    consV.js.material_dashboard.chartist, consV.js.material_dashboard.perfectScrollbarJquery,
+     consV.js.material_dashboard.main]
+})%>
+</html>

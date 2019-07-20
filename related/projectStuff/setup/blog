@@ -1,0 +1,12 @@
+install ftp
+https://wordpress.org/download/
+aria2c link
+cd dadasd
+sudo chmod a+rw -R . -R
+create database with phpmyadmin/ or use curreny wordpress database with diffrent prifix
+--
+cuda blog.
+restore backup
+---
+enable https with certbot
+disable cloudflare https
